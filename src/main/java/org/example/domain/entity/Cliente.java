@@ -1,6 +1,7 @@
 package org.example.domain.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Cliente {
@@ -15,6 +16,17 @@ public class Cliente {
 
     public Cliente(String nome) {
         this.nome = nome;
+    }
+
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedidos;
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public Cliente(Integer id,String nome) {

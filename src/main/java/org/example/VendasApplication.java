@@ -19,7 +19,7 @@ public class VendasApplication {
             clientes.save(new Cliente("Maria"));
             clientes.save(new Cliente("Caio"));
 
-            List<Cliente> caios = clientes.findByNomeLike("Caio");
+            List<Cliente> caios = clientes.findByNomeCustom("Caio");
             caios.forEach(System.out::println);
 
             boolean existe = clientes.existsByNome("Caio");
