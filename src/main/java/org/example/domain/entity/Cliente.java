@@ -18,7 +18,7 @@ public class Cliente {
         this.nome = nome;
     }
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private Set<Pedido> pedidos;
 
     public Set<Pedido> getPedidos() {
