@@ -17,27 +17,10 @@ import java.util.List;
 public class VendasApplication {
 
     @Bean
-    public CommandLineRunner init(@Autowired Clientes clientes, @Autowired Pedidos pedidos) {
+    public CommandLineRunner commandLineRunner(@Autowired Clientes clientes){
         return args -> {
-            System.out.println("Salvando Clientes");
-
-            Cliente cliente = new Cliente("Maria");
-
-            clientes.save(cliente);
-            clientes.save(new Cliente("Caio"));
-
-            Pedido p = new Pedido();
-            p.setCliente(cliente);
-            p.setDataPedido(LocalDate.now());
-            p.setTotal(BigDecimal.valueOf(1000));
-
-            pedidos.save(p);
-
-            Cliente fulano = clientes.findClientFetchPedidos(cliente.getId());
-            System.out.println(fulano);
-            System.out.println(fulano.getPedidos());
-
-            pedidos.findByCliente(cliente).forEach(System.out::println);
+          Cliente c = new Cliente(null, "Fulano");
+          clientes.save(c);
         };
     }
 
